@@ -22,7 +22,6 @@ end
 
 # models
 class User < ActiveRecord::Base
-#  has_model_history :name, :age, :creator => nil
   has_model_history :name, :age
   validates :name, :presence => true
 end
