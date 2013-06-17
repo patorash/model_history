@@ -1,6 +1,6 @@
 # ModelHistory
 
-TODO: Write a gem description
+Model History is a simple gem that allows you to keep track of changes to specific fields in your Rails models using the ActiveRecord::Dirty module.
 
 ## Installation
 
@@ -8,15 +8,23 @@ Add this line to your application's Gemfile:
 
     gem 'model_history'
 
-And then execute:
+Install it using Bundler:
 
-    $ bundle
+    $ bundle install
 
-Or install it yourself as:
+Generate the Model History migration and migrate your database
 
-    $ gem install model_history
+    $ rails generate model_history:migration
+    $ rake db:migrate
 
 ## Usage
+
+Ruby```
+class Widget < ActiveRecord::Base
+  has_model_history :name, :price, :creator => proc{ User.current_user }
+  attr_accessible :name, :price
+end
+```
 
 TODO: Write usage instructions here
 
