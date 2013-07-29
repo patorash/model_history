@@ -25,10 +25,11 @@ class ModelHistoryRecord < ActiveRecord::Base
     order("CASE WHEN (#{table_name}.revised_created_at IS NULL OR #{table_name}.revised_created_at = '') then #{table_name}.created_at else #{table_name}.revised_created_at END #{asc_or_desc}")
   }
 
-
-  attr_accessible :model, :model_id, :model_type,
-                  :column_name, :column_type, :old_value, :new_value, 
-                  :creator, :creator_id, :creator_type, :revised_created_at
+  unless ActiveRecord::VERSION::MAJOR >= 4
+    attr_accessible :model, :model_id, :model_type,
+                    :column_name, :column_type, :old_value, :new_value,
+                    :creator, :creator_id, :creator_type, :revised_created_at
+  end
 
   attr_accessor   :performing_manual_update
 
