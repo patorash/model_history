@@ -24,7 +24,7 @@ module ModelHistory
 
     def create_migration_file
       if self.class.orm_has_migration?
-        migration_template 'migration.rb', 'db/migrate/create_model_history_records'
+        migration_template 'migration.rb', 'db/migrate/create_model_history_records.rb'
       end
     end
   end
