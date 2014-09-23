@@ -1,7 +1,5 @@
 module ModelHistory
-   
   module Mixin
-
     class CreatorProcError < StandardError ; end
     
     def self.included base
@@ -99,8 +97,8 @@ module ModelHistory
       def add_model_history_record column_name, old_value, new_value, options={}    
         creator = options[:creator] || self.creator_for_model_history
         
-        dhr_attributes = { 
-          :model       => self,
+        mhr_attributes = {
+          :model        => self,
           :column_name  => column_name,
           :column_type  => self.class.columns_hash[column_name.to_s].type,
           :old_value    => old_value,
@@ -108,7 +106,7 @@ module ModelHistory
           :creator      => creator
         }  
 
-        dhr = ModelHistoryRecord.new(dhr_attributes)
+        dhr = ModelHistoryRecord.new(mhr_attributes)
         
         # attributes for manual updates
         [:revised_created_at, :performing_manual_update].each do |attribute|

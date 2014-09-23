@@ -1,5 +1,7 @@
 # ModelHistory
 
+[![Build Status](https://travis-ci.org/patorash/model_history.png?branch=master)](https://travis-ci.org/patorash/model_history)
+
 Model History is a simple gem that allows you to keep track of changes to specific fields in your Rails models using the ActiveRecord::Dirty module.
 
 ## Installation

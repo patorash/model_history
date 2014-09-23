@@ -6,7 +6,7 @@ require 'model_history/version'
 Gem::Specification.new do |spec|
   spec.name          = 'model_history'
   spec.version       = ModelHistory::VERSION
-  spec.authors       = ['patorash']
+  spec.authors       = ['Toyoaki Oko']
   spec.email         = ['chariderpato@gmail.com']
   spec.description   = %q{Model History is a simple gem that allows you to keep track of changes to specific fields in your Rails models using the ActiveRecord::Dirty module.}
   spec.summary       = %q{Model History is a simple gem that allows you to keep track of changes to specific fields in your Rails models using the ActiveRecord::Dirty module.}
@@ -18,11 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.3'
+  spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rspec-rails'
-  spec.add_development_dependency 'activerecord'
+  spec.add_development_dependency 'activerecord', '>= 3.2.11'
   spec.add_development_dependency 'sqlite3'
-  spec.add_dependency 'rails', '>= 3.2.11'
 end

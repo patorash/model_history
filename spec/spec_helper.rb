@@ -7,7 +7,6 @@ require 'rspec'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 require File.join(File.dirname(__FILE__), 'fake_app')
 
-require 'rspec/rails'
 require 'generators/model_history/migration/templates/active_record/migration'
 
 RSpec.configure do |config|
