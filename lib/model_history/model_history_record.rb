@@ -2,7 +2,7 @@ require "active_record"
 
 class ModelHistoryRecord < ActiveRecord::Base
   belongs_to :creator,  :polymorphic => true
-  belongs_to :model,   :polymorphic => true
+  belongs_to :model,    :polymorphic => true
 
   validates_presence_of :model_type, :model_id, :column_name, :column_type, :new_value
 
@@ -26,9 +26,11 @@ class ModelHistoryRecord < ActiveRecord::Base
   }
 
 
-  attr_accessible :model, :model_id, :model_type,
-                  :column_name, :column_type, :old_value, :new_value, 
-                  :creator, :creator_id, :creator_type, :revised_created_at
+  if ::ActiveRecord::VERSION::MAJOR < 4
+    attr_accessible :model, :model_id, :model_type,
+                    :column_name, :column_type, :old_value, :new_value,
+                    :creator, :creator_id, :creator_type, :revised_created_at
+  end
 
   attr_accessor   :performing_manual_update
 
@@ -51,7 +53,7 @@ class ModelHistoryRecord < ActiveRecord::Base
   
   private
   
-  def val_to_col_type attribute
+  def val_to_col_type(attribute)
     val_as_string = self[attribute]
     return nil if val_as_string.nil?
     case self[:column_type].to_sym

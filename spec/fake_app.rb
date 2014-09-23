@@ -35,6 +35,10 @@ Object.const_set(:ApplicationHelper, Module.new)
 #migrations
 class CreateAllTables < ActiveRecord::Migration
   def self.up
-    create_table(:users) {|t| t.string :name; t.integer :age}
+    create_table :users do |t|
+      t.string :name
+      t.integer :age
+      t.timestamps
+    end
   end
 end
